@@ -12,7 +12,7 @@ router.get('/:jid', jeuxController.updateJeu);
 router.post('/', 
     [
         check('title').not().isEmpty(),
-        check('description').not().isEmpty(),
+        check('description').isLength({ min: 10 }),
         check('nbJoueur').not().isEmpty(),
         check('duration').not().isEmpty()
     ],
