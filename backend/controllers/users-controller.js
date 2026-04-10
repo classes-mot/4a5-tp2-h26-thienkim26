@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../models/user.js';
+import HttpError from '../util/http-error.js';
 
 //Inscription des nouveaux utilisateurs
 const registerUser = async (req, res, next) => {
@@ -38,7 +39,7 @@ const registerUser = async (req, res, next) => {
 };
 
 //Connexion des utilisateurs
-const connexion = async ( req, res, next) => {
+const connexionUser = async ( req, res, next) => {
     const {email, password} = req.body;
 
     //Try et catch : Vérification qu'un compte existant avec un courriel exist déjà
@@ -57,4 +58,9 @@ const connexion = async ( req, res, next) => {
         const error = new HttpError('Veuillez vérifier votre courriel ou votre mot de passe..', 401);
         return next(error);
     }
+};
+
+export default {
+    registerUser,
+    connexionUser,
 };
