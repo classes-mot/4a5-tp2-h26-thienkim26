@@ -58,6 +58,26 @@ const connexionUser = async ( req, res, next) => {
         const error = new HttpError('Veuillez vérifier votre courriel ou votre mot de passe..', 401);
         return next(error);
     }
+
+    //Générer un jeton
+    let token;
+
+    try {
+        token = jwt.sign(
+            { userId: existantUser.id, email: existantUser.email },
+            'cleSuperSecrete!',
+            { expiresIn : '1h'}
+        );
+    } catch (err) {
+        const error = new HttpError('Erreur lors de la génération du jeton, veuillez réessayer.', 500);
+        return next(error);
+    }
+
+    res.status(200).json({
+        userId : existantUser.id,
+        email: existantUser.email,
+        token,
+    });
 };
 
 export default {
