@@ -1,8 +1,11 @@
 import express from 'express';
 import { check } from 'express-validator';
 import jeuxController from '../controllers/jeux-controller.js';
+import checkAuth from '../middleware/check-auth.js';
 
 const router = express.Router();
+
+router.use(checkAuth);
 
 //Route d'ajouter un nouveau jeu, en faisant la vérification avant l'ajout
 router.post('/', 

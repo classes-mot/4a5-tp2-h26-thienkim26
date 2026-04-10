@@ -1,11 +1,11 @@
-import moogoose from "mongoose";
+import mongoose from "mongoose";
 
 let isConnected = false;
 
 export const connectDB = async ()=> {
     if (isConnected) return;
 
-    let uri = '';
+    let uri = 'mongodb://localhost:27017/Tp2-Nguyen';
 
     try{
         await mongoose.connect(uri);

@@ -1,5 +1,7 @@
+import HttpError from '../util/http-error.js';
 import { Jeu } from '../models/jeu.js';
 import { User } from '../models/user.js';
+import { validationResult } from 'express-validator';
 
 //Post
 export const createJeu = async (req, res, next) => {
@@ -19,6 +21,7 @@ export const createJeu = async (req, res, next) => {
         description,
         nbJoueur,
         duration,
+        owner: userId
     });
 
     //Vérifier si l'utilisateur existe

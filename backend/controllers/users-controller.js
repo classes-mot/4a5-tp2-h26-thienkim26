@@ -4,7 +4,7 @@ import HttpError from '../util/http-error.js';
 
 //Inscription des nouveaux utilisateurs
 const registerUser = async (req, res, next) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, jeux } = req.body;
 
     //Try et catch, si l'utilisateur exist déjà via le courriel
     let existantUser;
