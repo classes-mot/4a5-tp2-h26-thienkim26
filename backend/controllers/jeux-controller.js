@@ -2,7 +2,7 @@ import { Jeu } from '../models/jeu.js';
 import { User } from '../models/user.js';
 
 //Post
-export const ajoutJeu = async (req, res, next) => {
+export const createJeu = async (req, res, next) => {
     const userId = req.userData.userId;
     //Validation des champs
     const validationErrors = validationResult(req);
@@ -14,7 +14,7 @@ export const ajoutJeu = async (req, res, next) => {
     const { title, description, nbJoueur, duration } = req.body;
 
     //Création de l'objet Mongoose
-    const ajoutJeu = new Jeu({
+    const createJeu = new Jeu({
         title,
         description,
         nbJoueur,
@@ -39,8 +39,8 @@ export const ajoutJeu = async (req, res, next) => {
 
     //Sauvegard dans MongoDB
     try {
-        await ajoutJeu.save();
-        user.jeux.push(ajoutJeu);
+        await createJeu.save();
+        user.jeux.push(createJeu);
         await user.save();
     } catch (e) {
         console.log(e.message);
@@ -48,7 +48,7 @@ export const ajoutJeu = async (req, res, next) => {
         return next(err);
     }
 
-    res.status(201).json({ jeu: ajoutJeu });
+    res.status(201).json({ jeu: createJeu });
 };
 
 //Get all jeux
@@ -128,7 +128,7 @@ const deleteJeu = async (req, res, next) => {
 };
 
 export default {
-    ajoutJeu,
+    createJeu,
     getJeux,
     getJeuById,
     updateJeu,
