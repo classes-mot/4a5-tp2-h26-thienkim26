@@ -4,10 +4,6 @@ import jeuxController from '../controllers/jeux-controller.js';
 
 const router = express.Router();
 
-//Route pour obtenir les jeux par son Id
-router.get('/:jid', jeuxController.getJeuxById);
-//Route pour mettre à jour un jeu
-router.get('/:jid', jeuxController.updateJeu);
 //Route d'ajouter un nouveau jeu, en faisant la vérification avant l'ajout
 router.post('/', 
     [
@@ -18,8 +14,14 @@ router.post('/',
     ],
     jeuxController.createJeu
 );
+
 //Route pour obtenir list des jeux
-router.patch('/:jid', jeuxController.getJeux);
+router.get('/', jeuxController.getJeux);
+//Route pour obtenir les jeux par son Id
+router.get('/:jid', jeuxController.getJeuxById);
+
+//Route pour mettre à jour un jeu
+router.patch('/:jid', jeuxController.updateJeu);
 //Route pour supprimer un jeu
 router.delete('/:jid', jeuxController.deleteJeux);
 

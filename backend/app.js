@@ -1,7 +1,7 @@
 import express from 'express';
-import jeuxRoutes from './backend/routes/jeux-routes.js';
-import usersRoutes from './backend/routes/users-routes.js';
-import errorHandler from './backend/handler/error-handler.js';
+import jeuxRoutes from './routes/jeux-routes.js';
+import usersRoutes from './routes/users-routes.js';
+import errorHandler from './handler/error-handler.js';
 
 const app = express();
 app.use(express.json());
