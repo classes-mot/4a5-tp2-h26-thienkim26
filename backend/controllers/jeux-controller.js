@@ -94,7 +94,7 @@ export const updateJeu = async ( req, res, next) => {
         });
 
         if (!updateJeu) {
-            return res.status(404).json({message : "Le jeux est introuvable.."});
+            return res.status(404).json({message : "Le jeu n'est pas trouvé.."});
         }
 
         res.status(200).json({
@@ -106,3 +106,31 @@ export const updateJeu = async ( req, res, next) => {
 };
 
 //Supprimer Jeu
+const deleteJeu = async (req, res, next) => {
+    const jeuId = req.params.jid;
+
+    try {
+        const jeu = await Jeu.findById(jeuId).populate('owner');
+        if (!jeu) {
+            return res.status(404).json({ message : "Le jeu n'est pas trouvé.." });
+        }
+
+        await jeu.deleteOne();
+
+        jeu.owner.jeux.pull(jeu._id);
+        await jeu.owner.save();
+
+        res.status(200).json({ message : 'Le jeu a été supprimé.' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message : 'Erreur a eu lieu lorsque le jeu a été supprimer..' })
+    }
+};
+
+export default {
+    ajoutJeu,
+    getJeux,
+    getJeuById,
+    updateJeu,
+    deleteJeu,
+};
