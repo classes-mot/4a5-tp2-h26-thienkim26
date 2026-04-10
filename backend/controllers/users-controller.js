@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../models/user.js';
 
-//Inscription des novueaux utilisateurs
+//Inscription des nouveaux utilisateurs
 const registerUser = async (req, res, next) => {
     const { name, email, password } = req.body;
 
@@ -37,9 +37,11 @@ const registerUser = async (req, res, next) => {
     res.status(201).json({ user : creerUser.toObject({getters : true}) });
 };
 
+//Connexion des utilisateurs
 const connexion = async ( req, res, next) => {
     const {email, password} = req.body;
 
+    //Try et catch : Vérification qu'un compte existant avec un courriel exist déjà
     let existantUser;
 
     try {
@@ -50,6 +52,7 @@ const connexion = async ( req, res, next) => {
         return next(error);
     }
 
+    //Boucle if : envoyer un message si l'utilisateur n'exist pas ou si le mot de passe ne ressemble pas à celui enregistrer
     if(!existantUser || existantUser.password !== password) {
         const error = new HttpError('Veuillez vérifier votre courriel ou votre mot de passe..', 401);
         return next(error);
