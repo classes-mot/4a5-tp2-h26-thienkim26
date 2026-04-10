@@ -12,7 +12,7 @@ const registerUser = async (req, res, next) => {
         existantUser = await User.findOne({email: email});
     } catch (err) {
         console.error(err);
-        const error = new HttpError('Enregistrement échouée...', 500);
+        const error = new HttpError('Enregistrement échouée, veuillez réessayer..', 500);
         return next(error);
     }
     if(existantUser) {
@@ -35,4 +35,23 @@ const registerUser = async (req, res, next) => {
     }
     console.log('Enregistrer!');
     res.status(201).json({ user : creerUser.toObject({getters : true}) });
+};
+
+const connexion = async ( req, res, next) => {
+    const {email, password} = req.body;
+
+    let existantUser;
+
+    try {
+        existantUser = await User.findOne({ email : email});
+    } catch (err) {
+        console.error(err);
+        const error = new HttpError('Connexion échouée, veuillez réessayer..', 401);
+        return next(error);
+    }
+
+    if(!existantUser || existantUser.password !== password) {
+        const error = new HttpError('Veuillez vérifier votre courriel ou votre mot de passe..', 401);
+        return next(error);
+    }
 };
