@@ -84,5 +84,25 @@ const getJeuById = async (req, res, next) => {
 }
 
 //Patch MAJ Jeu
+export const updateJeu = async ( req, res, next) => {
+    const jeuId = req.params.jid;
+    const jeuUpdates = req.body;
+
+    try {
+        const updateJeu = await Jeu.findByIdAndUpdate(jeuId, jeuUpdates, {
+            new: true,
+        });
+
+        if (!updateJeu) {
+            return res.status(404).json({message : "Le jeux est introuvable.."});
+        }
+
+        res.status(200).json({
+            jeu : updateJeu.toObject({ getters : true }),
+        });
+    } catch (err) {
+        res.status(500).json({message : 'Erreur a lieu lors de la mise à jour du jeu..'});
+    }
+};
 
 //Supprimer Jeu
