@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { User } from '../models/user.js';
 
+//Inscription des novueaux utilisateurs
 const registerUser = async (req, res, next) => {
     const { name, email, password } = req.body;
 
+    //Try et catch, si l'utilisateur exist déjà via le courriel
     let existantUser;
 
     try {
@@ -18,6 +20,8 @@ const registerUser = async (req, res, next) => {
         return;
     }
 
+    //Try et catch : la création d'un nouveau utilisateur 
+    // avec un message d'erreur et un message de succès
     const creerUser = new User ({
         name, email, password, jeux
     });
