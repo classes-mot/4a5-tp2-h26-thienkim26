@@ -59,7 +59,7 @@ const getJeux = async (req, res, next) => {
         jeux = await Jeu.find().populate('owner', '-password');
     } catch (e) {
         console.log(e);
-        const err = new HttpError('Erreur BD est arrivée..', 500);
+        const err = new HttpError('Erreur BD est arrivé..', 500);
         return next(err);
     }
 
@@ -69,6 +69,19 @@ const getJeux = async (req, res, next) => {
 };
 
 //Get jeu id
+const getJeuById = async (req, res, next) => {
+    const jeuId = req.params.jid;
+
+    let jeu;
+
+    try {
+        jeu = await Jeu.findById(jeuId);
+    } catch (e) {
+        console.log(e);
+        const err = new HttpError('Erreur BD est arrivé..', 500);
+        return next(err);
+    }
+}
 
 //Patch MAJ Jeu
 
