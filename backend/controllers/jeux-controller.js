@@ -84,7 +84,11 @@ const getJeuById = async (req, res, next) => {
         const err = new HttpError('Erreur BD est arrivé..', 500);
         return next(err);
     }
-}
+
+    res.json({
+        jeu : jeu.toObject({ getters : true })
+    });
+};
 
 //Patch MAJ Jeu
 export const updateJeu = async ( req, res, next) => {
