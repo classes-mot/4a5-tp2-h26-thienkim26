@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "6dc6973c-443c-4d35-a42c-2f400a241c6c",
+    "name": "Tp2_ThienKimNguyen",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52765627",
+    "_collection_link": "https://go.postman.co/collection/52765627-6dc6973c-443c-4d35-a42c-2f400a241c6c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/api/jeux",
+      "item": [
+        {
+          "name": "Add jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ5ODA1OWVjMGNiZjcxYmI1NzZkYTEiLCJlbWFpbCI6ImpvaG5Eb2VAZ21haWwuY29tIiwiaWF0IjoxNzc1ODYyOTMyLCJleHAiOjE3NzU4NjY1MzJ9.Aeyy1sOceCxXDih0tp2ILEyGcj7_osG9oZCOkRo_ZWI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\" : \"Taco vs Burrito\",\r\n    \"description\" : \"Taco vs Burrito est un jeu stratégique, captivant, loufoque et passionnant jusqu'à la toute dernière carte.\",\r\n    \"nbJoueur\" : \"4\",\r\n    \"duration\" : \"15\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/jeux",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "jeux"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Jeux",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ5ODA1OWVjMGNiZjcxYmI1NzZkYTEiLCJlbWFpbCI6ImpvaG5Eb2VAZ21haWwuY29tIiwiaWF0IjoxNzc1ODYyOTMyLCJleHAiOjE3NzU4NjY1MzJ9.Aeyy1sOceCxXDih0tp2ILEyGcj7_osG9oZCOkRo_ZWI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/jeux",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "jeux"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Jeu (ID)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ5ODA1OWVjMGNiZjcxYmI1NzZkYTEiLCJlbWFpbCI6ImpvaG5Eb2VAZ21haWwuY29tIiwiaWF0IjoxNzc1ODYyOTMyLCJleHAiOjE3NzU4NjY1MzJ9.Aeyy1sOceCxXDih0tp2ILEyGcj7_osG9oZCOkRo_ZWI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/jeux/69d98cc94e29e2e3ab88da6b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "jeux",
+                "69d98cc94e29e2e3ab88da6b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "MAJ Jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ5ODA1OWVjMGNiZjcxYmI1NzZkYTEiLCJlbWFpbCI6ImpvaG5Eb2VAZ21haWwuY29tIiwiaWF0IjoxNzc1ODYyOTMyLCJleHAiOjE3NzU4NjY1MzJ9.Aeyy1sOceCxXDih0tp2ILEyGcj7_osG9oZCOkRo_ZWI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Stardew Valley: Collector's Edition\",\r\n    \"description\": \"Cultiver des champs, élever des animaux, agrandir leur exploitation et collecter des ressources dans toute la vallée.\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/jeux/69d98cc94e29e2e3ab88da6b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "jeux",
+                "69d98cc94e29e2e3ab88da6b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Supprimer Jeu",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OWQ5ODA1OWVjMGNiZjcxYmI1NzZkYTEiLCJlbWFpbCI6ImpvaG5Eb2VAZ21haWwuY29tIiwiaWF0IjoxNzc1ODYyOTMyLCJleHAiOjE3NzU4NjY1MzJ9.Aeyy1sOceCxXDih0tp2ILEyGcj7_osG9oZCOkRo_ZWI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/jeux/69d98e0a4e29e2e3ab88da6d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "jeux",
+                "69d98e0a4e29e2e3ab88da6d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "/api/users",
+      "item": [
+        {
+          "name": "Inscription (USER)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\" : \"John\",\r\n    \"email\" : \"johnDoe@gmail.com\",\r\n    \"password\" : \"password\",\r\n    \"jeux\" : []\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Connexion (USER)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\" : \"johnDoe@gmail.com\",\r\n    \"password\" : \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
