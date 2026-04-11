@@ -4,7 +4,6 @@ function errorHandler(error, req, res, next){
     }
 
     res.status(error.code || 500);
-
     res.json({message: error.message || 'Une erreur inconnue est survenue!'});
 }
 export default errorHandler;
